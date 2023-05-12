@@ -6,7 +6,7 @@
 #    By: yfang <yfang@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/21 12:46:13 by yfang             #+#    #+#              #
-#    Updated: 2023/05/12 10:45:58 by yfang            ###   ########.fr        #
+#    Updated: 2023/05/12 16:05:14 by yfang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,11 @@ BONUS = ft_lstnew_bonus.c\
 	ft_lstadd_front_bonus.c\
 	ft_lstsize_bonus.c\
 	ft_lstlast_bonus.c\
-	ft_lstadd_back_bonus.c
+	ft_lstadd_back_bonus.c\
+	ft_lstdelone_bonus.c\
+	ft_lstclear_bonus.c\
+	ft_lstiter_bonus.c\
+	ft_lstmap_bonus.c
 BONUS_OBJ = $(BONUS:.c=.o)
 FLAGS = -Wall -Werror -Wextra
 
