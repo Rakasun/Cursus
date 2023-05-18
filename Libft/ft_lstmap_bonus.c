@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:56:31 by yfang             #+#    #+#             */
-/*   Updated: 2023/05/12 16:06:24 by yfang            ###   ########.fr       */
+/*   Updated: 2023/05/18 15:13:02 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*newlst;
 	t_list	*cplst;
+	void	*aux;
 
 	if (!lst)
 		return (NULL);
 	newlst = 0;
 	while (lst)
 	{
-		cplst = ft_lstnew(f(lst->content));
+		aux = f(lst->content);
+		cplst = ft_lstnew(aux);
 		if (cplst)
 		{
 			ft_lstadd_back(&newlst, cplst);
@@ -31,6 +33,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		else
 		{
 			ft_lstclear(&newlst, del);
+			del(aux);
 			return (0);
 		}
 	}
