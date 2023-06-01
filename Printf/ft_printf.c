@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:09:49 by yfang             #+#    #+#             */
-/*   Updated: 2023/05/29 18:04:22 by yfang            ###   ########.fr       */
+/*   Updated: 2023/05/31 16:37:21 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	ft_printf(char const *str, ...)
 
 	i = 0;
 	len = 0;
-	if (write(0, "", 0) == -1)
-		return (-1);
 	va_start(args, str);
 	while (str[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 15:48:11 by yfang             #+#    #+#             */
-/*   Updated: 2023/05/29 17:52:03 by yfang            ###   ########.fr       */
+/*   Updated: 2023/05/31 13:26:43 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define FT_PRINTF_H
 # include <unistd.h>
 # include <stdarg.h>
-# include <stddef.h>
-# include <stdlib.h>
 
 void	ft_putchar(char c, int *len);
 void	ft_putstr(char *str, int *len);
