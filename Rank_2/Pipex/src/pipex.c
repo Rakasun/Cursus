@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 11:37:09 by yfang             #+#    #+#             */
-/*   Updated: 2023/07/24 12:44:09 by yfang            ###   ########.fr       */
+/*   Updated: 2023/07/24 13:05:30 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,11 @@ void	ft_child(char **argv, char **envp, int *pipefd)
 	char	**comand;
 	int		fd;
 
+	if (access(argv[1], F_OK | R_OK) == -1)
+		return (perror(argv[1]));
 	fd = open(argv[1], O_RDONLY, 0777);
+	if (!fd)
+		return (perror(argv[1]));
 	if (fd < 0)
 		exit(1);
 	comand = ft_split(argv[2], ' ');
