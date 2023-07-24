@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 11:37:09 by yfang             #+#    #+#             */
-/*   Updated: 2023/07/20 16:11:46 by yfang            ###   ########.fr       */
+/*   Updated: 2023/07/24 12:44:09 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_father(char **argv, char **envp, int *pipefd)
 	str = ft_path(envp);
 	path = ft_comand_filter(comand[0], str + 5);
 	if (path == NULL)
-		perror(strerror(ENOENT));
+		return (perror(strerror(ENOENT)));
 	dup2(fd, STDOUT_FILENO);
 	dup2(pipefd[0], STDIN_FILENO);
 	close(pipefd[1]);
@@ -34,7 +34,7 @@ void	ft_father(char **argv, char **envp, int *pipefd)
 	{
 		free(path);
 		ft_free2(comand);
-		perror(argv[3]);
+		return (perror(argv[3]));
 	}
 }
 
@@ -52,14 +52,14 @@ void	ft_child(char **argv, char **envp, int *pipefd)
 	str = ft_path(envp);
 	path = ft_comand_filter(comand[0], str + 5);
 	if (path == NULL)
-		perror(strerror(ENOENT));
+		return (perror(strerror(ENOENT)));
 	dup2(fd, STDIN_FILENO);
 	dup2(pipefd[1], STDOUT_FILENO);
 	close(pipefd[0]);
 	close(pipefd[1]);
 	close(fd);
 	if (execve(path, comand, NULL) == -1)
-		perror(argv[2]);
+		return (perror(argv[2]));
 }
 
 int	main(int argc, char **argv, char **envp)

@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:13:15 by yfang             #+#    #+#             */
-/*   Updated: 2023/07/20 16:12:11 by yfang            ###   ########.fr       */
+/*   Updated: 2023/07/24 12:41:19 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char	*ft_comand_filter(char *comd, char *str)
 		tmp = ft_strjoin(path[i++], "/");
 		aux = ft_strjoin(tmp, comd);
 		find = access(aux, F_OK);
+		free(tmp);
 		free(aux);
 	}
 	tmp = ft_strjoin(path[--i], "/");
@@ -67,6 +68,7 @@ void	ft_error(int i)
 	if (i == 1)
 		perror("Error minimo 6 argumentos.\n"
 			"Ej.: ./pipex_bonus here_doc LIMITER cmd1 cmd2 outfile");
+	exit(1);
 }
 
 void	ft_exec_bonus(char *argv, char **envp)
@@ -79,7 +81,7 @@ void	ft_exec_bonus(char *argv, char **envp)
 	str = ft_path(envp);
 	path = ft_comand_filter(comand[0], str + 5);
 	if (path == NULL)
-		perror(strerror(ENOENT));
+		return (perror(strerror(ENOENT)));
 	if (execve(path, comand, NULL) == -1)
-		perror(argv);
+		return (perror(argv));
 }
