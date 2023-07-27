@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:13:15 by yfang             #+#    #+#             */
-/*   Updated: 2023/07/24 12:45:13 by yfang            ###   ########.fr       */
+/*   Updated: 2023/07/25 14:43:21 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ void	ft_error(int i)
 {
 	if (i == 0)
 		perror("Error: nº incorrecto de argumentos.\n"
-			"Ejemplo: ./pipex infile cmd1 cmd2 outfile");
+			"Ej.: ./pipex infile cmd1 cmd2 outfile");
 	if (i == 1)
 		perror("Error minimo 6 argumentos.\n"
-			"Ej.: ./pipex_bonus here_doc LIMITER cmd1 cmd2 outfile");
+			"Ej.: ./pipex_bonus here_doc LIMITER cmd1 cmd2 ... outfile\n"
+			"Ej.: ./pipex_bonus infile cmd1 cmd2 ... outfile\n");
 	exit(1);
 }
 
