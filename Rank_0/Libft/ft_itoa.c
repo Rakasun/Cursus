@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 11:12:02 by yfang             #+#    #+#             */
-/*   Updated: 2023/05/12 12:20:52 by yfang            ###   ########.fr       */
+/*   Updated: 2023/09/11 10:33:59 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_itoa(int n)
 {
 	char		*dst;
 	int			numdig;
-	long int	num;	
+	long int	num;
 
 	num = n;
 	if (num < 0)
