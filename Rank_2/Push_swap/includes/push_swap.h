@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:22:06 by yfang             #+#    #+#             */
-/*   Updated: 2023/12/18 19:29:26 by yfang            ###   ########.fr       */
+/*   Updated: 2023/12/20 16:02:28 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,12 @@ typedef struct s_data
 void	ft_error(void);
 //	Utils_check
 void	ft_check_ifnum(t_data *data);
+void	ft_check_repeat(t_data *data);
+//	Utils_utils
+long	ft_atol(const char *str);
+//	Utils_list
+void	lstadd_back(t_stack **lst, t_stack *new);
+t_stack	*lstlast(t_stack *lst);
+t_stack	*lstnew(int content);
 
 #endif

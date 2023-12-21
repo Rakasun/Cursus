@@ -10,7 +10,10 @@ LIBFT_LIB_PATH = includes/Libft/libft.a
 HEADERS	= -I $(LIBFT_PATH)/include/ -I ./include
 
 SRC =  src/push_swap.c\
-	src/error.c
+	src/error.c\
+	src/utils_check.c\
+	src/utils_utils.c\
+	src/utils_list.c
 OBJ = $(SRC:src/%.c=obj/%.o)
 
 BLUE = \033[1;38;5;153m
