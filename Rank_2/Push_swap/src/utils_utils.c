@@ -6,11 +6,21 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 14:04:33 by yfang             #+#    #+#             */
-/*   Updated: 2023/12/20 14:04:55 by yfang            ###   ########.fr       */
+/*   Updated: 2023/12/22 17:49:09 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	ft_algorithm(t_data *data)
+{
+	if (data->numarg == 2)
+		ft_swap_sa(data);
+	else if (data->numarg == 3)
+		ft_3num("3");
+	else if (data->numarg > 3)
+		ft_printf("+4");
+}
 
 long	ft_atol(const char *str)
 {

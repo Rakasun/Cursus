@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:22:06 by yfang             #+#    #+#             */
-/*   Updated: 2023/12/20 16:02:28 by yfang            ###   ########.fr       */
+/*   Updated: 2023/12/22 18:23:53 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_stack
 typedef struct s_data
 {
 	char		**arg;
-	int			lst_size;
+	int			numarg;
 	t_stack		*stack_a;
 	t_stack		*stack_b;
 }	t_data;
@@ -48,13 +48,28 @@ typedef struct s_data
 //	Errors
 void	ft_error(void);
 //	Utils_check
-void	ft_check_ifnum(t_data *data);
-void	ft_check_repeat(t_data *data);
+void	ft_checks(t_data *data);
+int		ft_check_order(t_stack **stack_a);
 //	Utils_utils
 long	ft_atol(const char *str);
-//	Utils_list
-void	lstadd_back(t_stack **lst, t_stack *new);
-t_stack	*lstlast(t_stack *lst);
-t_stack	*lstnew(int content);
+void	ft_algorithm(t_data *data);
+//	Utils_stack
+void	ft_stckadd_back(t_stack **stck, t_stack *new);
+t_stack	*ft_stcklast(t_stack *stck);
+t_stack	*ft_stcknew(int value);
+//	Init
+t_stack	*ft_init_a(t_data *data);
+//	Moves:
+//		-Swap
+void	ft_swap_sa(t_data *data);
+void	ft_swap_sb(t_data *data);
+void	ft_swap_ss(t_data *data);
+//		-Push
+void	ft_push_pa(t_data *data);
+void	ft_push_pb(t_data *data);
+//		-Rotate
+
+//		-Rrotate
+
 
 #endif

@@ -1,50 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_list.c                                       :+:      :+:    :+:   */
+/*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:55:30 by yfang             #+#    #+#             */
-/*   Updated: 2023/12/21 18:28:35 by yfang            ###   ########.fr       */
+/*   Updated: 2023/12/22 18:23:26 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_stack	*lstnew(int content)
+t_stack	*ft_stcknew(int value)
 {
-	t_stack	*new_list;
+	t_stack	*new_stack;
 
-	new_list = malloc(sizeof(t_stack));
-	if (!new_list)
+	new_stack = malloc(sizeof(t_stack));
+	if (!new_stack)
 		return (0);
-	new_list->value = content;
-	new_list->next = NULL;
-	return (new_list);
+	new_stack->value = value;
+	new_stack->next = NULL;
+	return (new_stack);
 }
 
-t_stack	*lstlast(t_stack *lst)
+t_stack	*ft_stcklast(t_stack *stck)
+{
+	t_stack	*cpstck;
+
+	if (!stck)
+		return (0);
+	cpstck = stck;
+	while (cpstck->next)
+		cpstck = cpstck->next;
+	return (cpstck);
+}
+
+void	ft_stckadd_back(t_stack **stck, t_stack *new)
 {
 	t_stack	*cplst;
 
-	if (!lst)
-		return (0);
-	cplst = lst;
-	while (cplst->next)
-		cplst = cplst->next;
-	return (cplst);
-}
-
-void	lstadd_back(t_stack **lst, t_stack *new)
-{
-	t_stack	*cplst;
-
-	if (*lst != 0)
+	if (*stck != 0)
 	{
-		cplst = lstlast(*lst);
+		cplst = ft_stcklast(*stck);
 		cplst->next = new;
 	}
 	else
-		*lst = new;
+		*stck = new;
 }
