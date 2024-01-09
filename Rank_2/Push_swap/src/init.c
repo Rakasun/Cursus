@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:09:51 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/08 18:46:15 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/09 19:13:17 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,30 @@ void	ft_pos(t_stack *stack)
 	}
 }
 
-void	ft_target_pos(t_stack *stack)
+void	ft_target_pos(t_stack *stack_a, t_stack *stack_b)
 {
-	
+	int		i;
+	int		j;
+	t_stack	*tmpa;
+	t_stack	*tmpb;
+
+	tmpb = stack_b;
+	while (tmpb)
+	{
+		i = 0;
+		tmpa = stack_a;
+		j = tmpb->index + 1;
+		while (tmpa && tmpa->index != j)
+		{
+			tmpa = tmpa->next;
+			i++;
+		}
+		if (!tmpa)
+			tmpb->target_pos = 0;
+		else
+			tmpb->target_pos = i;
+		tmpb = tmpb->next;
+	}
 }
 
 t_stack	*ft_init_a(t_data *data)

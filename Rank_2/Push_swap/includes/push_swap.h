@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:22:06 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/08 18:46:27 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/09 18:55:18 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_stckadd_back(t_stack **stck, t_stack *new);
 t_stack	*ft_stcklast(t_stack *stck);
 t_stack	*ft_stcknew(int value);
 //	Init
-void	ft_target_pos(t_stack *stack);
+void	ft_target_pos(t_stack *stack_a, t_stack *stack_b);
 void	ft_pos(t_stack *stack);
 t_stack	*ft_init_a(t_data *data);
 //	Moves:
@@ -82,5 +82,7 @@ void	ft_rrotate_rrr(t_data *data);
 //		-Move
 void	ft_algostep(t_data *data);
 void	ft_short3(t_data *data);
+
+void	ft_visual(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:46:25 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/08 18:33:25 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/09 19:04:37 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_visual(t_data *data)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
-	
+
 	tmp = data->stack_a;
 	tmp2 = data->stack_b;
 	while (tmp)
@@ -27,7 +27,7 @@ void	ft_visual(t_data *data)
 	ft_printf("\n");
 	while (tmp2)
 	{
-		ft_printf("Value = %d, Index = %d, Pos = %d\n", tmp2->value, tmp2->index, tmp2->pos);
+		ft_printf("Value = %d, Index = %d, Pos = %d, Target = %d\n", tmp2->value, tmp2->index, tmp2->pos, tmp2->target_pos);
 		tmp2 = tmp2->next;
 	}
 }
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 {
 	t_data	*data;
 
-	data = malloc(sizeof(t_data));
+	data = ft_calloc(sizeof(t_data), 1);
 	if (!data)
 		return (0);
 	if (ac == 1)
