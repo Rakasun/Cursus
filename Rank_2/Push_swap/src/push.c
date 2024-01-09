@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:34:08 by yfang             #+#    #+#             */
-/*   Updated: 2023/12/22 18:17:51 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/08 17:33:28 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	ft_push_pa(t_data *data)
 
 void	ft_push_pb(t_data *data)
 {
-	ft_push(&data->stack_b, &data->stack_b);
+	ft_push(&data->stack_b, &data->stack_a);
 	ft_printf("pb\n");
 }

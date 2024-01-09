@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:34:11 by yfang             #+#    #+#             */
-/*   Updated: 2023/12/22 18:32:17 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/08 15:28:42 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_rotate_rb(t_data *data)
 
 void	ft_rotate_rr(t_data *data)
 {
-	ft_rotate_ra(&data->stack_a);
-	ft_rotate_rb(&data->stack_b);
+	ft_rotate_ra(data);
+	ft_rotate_rb(data);
 	ft_printf("rr\n");
 }

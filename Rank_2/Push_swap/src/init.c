@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:09:51 by yfang             #+#    #+#             */
-/*   Updated: 2023/12/22 15:48:01 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/08 18:46:15 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,18 @@ void	ft_pos(t_stack *stack)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (stack)
 	{
 		stack->pos = i;
 		stack = stack->next;
 		i++;
 	}
+}
+
+void	ft_target_pos(t_stack *stack)
+{
+	
 }
 
 t_stack	*ft_init_a(t_data *data)
@@ -54,6 +59,5 @@ t_stack	*ft_init_a(t_data *data)
 	while (data->arg[++i])
 		ft_stckadd_back(&data->stack_a, ft_stcknew(ft_atoi(data->arg[i])));
 	ft_index(data->stack_a);
-	ft_pos(data->stack_a);
 	return (data->stack_a);
 }

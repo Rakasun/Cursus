@@ -6,11 +6,37 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:55:30 by yfang             #+#    #+#             */
-/*   Updated: 2023/12/22 18:23:26 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/08 17:36:24 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	ft_stacksize(t_stack *lst)
+{
+	int		i;
+	t_stack	*cplst;
+
+	if (!lst)
+		return (0);
+	i = 1;
+	cplst = lst;
+	while (cplst->next)
+	{
+		i++;
+		cplst = cplst->next;
+	}
+	return (i);
+}
+
+void	ft_stackadd_front(t_stack **lst, t_stack *new)
+{
+	if (lst && new)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
+}
 
 t_stack	*ft_stcknew(int value)
 {

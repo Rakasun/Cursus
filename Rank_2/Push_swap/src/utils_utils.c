@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 14:04:33 by yfang             #+#    #+#             */
-/*   Updated: 2023/12/22 17:49:09 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/08 16:31:48 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	ft_algorithm(t_data *data)
 	if (data->numarg == 2)
 		ft_swap_sa(data);
 	else if (data->numarg == 3)
-		ft_3num("3");
+		ft_short3(data);
 	else if (data->numarg > 3)
-		ft_printf("+4");
+		ft_algostep(data);
 }
 
 long	ft_atol(const char *str)

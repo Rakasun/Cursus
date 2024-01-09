@@ -18,7 +18,8 @@ SRC =  src/push_swap.c\
 	src/swap.c\
 	src/push.c\
 	src/rotate.c\
-	src/rrotate.c
+	src/rrotate.c\
+	src/move.c 
 OBJ = $(SRC:src/%.c=obj/%.o)
 
 BLUE = \033[1;38;5;153m

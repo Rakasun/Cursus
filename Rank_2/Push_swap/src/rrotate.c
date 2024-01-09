@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 18:13:53 by yfang             #+#    #+#             */
-/*   Updated: 2023/12/22 18:38:45 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/08 16:13:25 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,20 @@
 void	ft_rrotate(t_stack	**stack)
 {
 	t_stack	*aux;
+	t_stack	*tmp;
 
-	aux = *stack;
-	*stack = ft_stcklast(*stack)->next;
-	(*stack)->next = aux;
-	ft_stcklast(aux)->next = NULL;
+	aux = ft_stcklast(*stack);
+	tmp = *stack;
+	while (tmp)
+	{
+		if (tmp->next->next == NULL)
+		{
+			tmp->next = NULL;
+			break ;
+		}
+		tmp = tmp->next;
+	}
+	ft_stackadd_front(stack, aux);
 }
 
 void	ft_rrotate_rra(t_data *data)
@@ -36,7 +45,7 @@ void	ft_rrotate_rrb(t_data *data)
 
 void	ft_rrotate_rrr(t_data *data)
 {
-	ft_rotate_ra(&data->stack_a);
-	ft_rotate_rb(&data->stack_b);
+	ft_rotate_ra(data);
+	ft_rotate_rb(data);
 	ft_printf("rrr\n");
 }

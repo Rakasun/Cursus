@@ -6,17 +6,11 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:33:55 by yfang             #+#    #+#             */
-/*   Updated: 2023/12/22 17:57:07 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/08 15:23:36 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	ft_checks(t_data *data)
-{
-	ft_check_ifnum(data);
-	ft_check_repeat(data);
-}
 
 int	ft_check_order(t_stack **stack_a)
 {
@@ -73,4 +67,10 @@ void	ft_check_ifnum(t_data *data)
 		i++;
 	}
 	data->numarg = i;
+}
+
+void	ft_checks(t_data *data)
+{
+	ft_check_ifnum(data);
+	ft_check_repeat(data);
 }

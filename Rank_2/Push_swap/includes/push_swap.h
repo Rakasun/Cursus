@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:22:06 by yfang             #+#    #+#             */
-/*   Updated: 2023/12/22 18:23:53 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/08 18:46:27 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,14 @@ int		ft_check_order(t_stack **stack_a);
 long	ft_atol(const char *str);
 void	ft_algorithm(t_data *data);
 //	Utils_stack
+int		ft_stacksize(t_stack *lst);
+void	ft_stackadd_front(t_stack **lst, t_stack *new);
 void	ft_stckadd_back(t_stack **stck, t_stack *new);
 t_stack	*ft_stcklast(t_stack *stck);
 t_stack	*ft_stcknew(int value);
 //	Init
+void	ft_target_pos(t_stack *stack);
+void	ft_pos(t_stack *stack);
 t_stack	*ft_init_a(t_data *data);
 //	Moves:
 //		-Swap
@@ -68,8 +72,15 @@ void	ft_swap_ss(t_data *data);
 void	ft_push_pa(t_data *data);
 void	ft_push_pb(t_data *data);
 //		-Rotate
-
+void	ft_rotate_ra(t_data *data);
+void	ft_rotate_rb(t_data *data);
+void	ft_rotate_rr(t_data *data);
 //		-Rrotate
-
+void	ft_rrotate_rra(t_data *data);
+void	ft_rrotate_rrb(t_data *data);
+void	ft_rrotate_rrr(t_data *data);
+//		-Move
+void	ft_algostep(t_data *data);
+void	ft_short3(t_data *data);
 
 #endif
