@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:34:11 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/08 15:28:42 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/22 12:54:25 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,32 @@ void	ft_rotate(t_stack	**stack)
 {
 	t_stack	*aux;
 
-	aux = *stack;
-	*stack = (*stack)->next;
-	ft_stcklast(*stack)->next = aux;
-	aux->next = NULL;
+	if (ft_stacksize(*stack) > 1)
+	{
+		aux = *stack;
+		*stack = (*stack)->next;
+		ft_stcklast(*stack)->next = aux;
+		aux->next = NULL;
+	}
 }
 
-void	ft_rotate_ra(t_data *data)
+void	ft_rotate_ra(t_data *data, int i)
 {
 	ft_rotate(&data->stack_a);
-	ft_printf("ra\n");
+	if (i == 0)
+		ft_printf("ra\n");
 }
 
-void	ft_rotate_rb(t_data *data)
+void	ft_rotate_rb(t_data *data, int i)
 {
 	ft_rotate(&data->stack_b);
-	ft_printf("rb\n");
+	if (i == 0)
+		ft_printf("rb\n");
 }
 
 void	ft_rotate_rr(t_data *data)
 {
-	ft_rotate_ra(data);
-	ft_rotate_rb(data);
+	ft_rotate_ra(data, 1);
+	ft_rotate_rb(data, 1);
 	ft_printf("rr\n");
 }

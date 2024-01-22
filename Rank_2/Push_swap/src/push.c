@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:34:08 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/09 19:04:45 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/22 14:16:48 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ void	ft_push(t_stack	**stack1, t_stack **stack2)
 {
 	t_stack	*aux;
 
-	aux = *stack2;
-	*stack2 = (*stack2)->next;
-	aux->next = *stack1;
-	*stack1 = aux;
+	if (ft_stacksize(*stack2) > 0)
+	{
+		aux = *stack2;
+		*stack2 = (*stack2)->next;
+		aux->next = *stack1;
+		*stack1 = aux;
+	}
 }
 
 void	ft_push_pa(t_data *data)

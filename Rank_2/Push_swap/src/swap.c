@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:33:43 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/08 15:26:18 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/22 12:56:12 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,32 @@ void	ft_swap(t_stack	**stack)
 {
 	t_stack	*aux;
 
-	aux = *stack;
-	*stack = (*stack)->next;
-	aux->next = (*stack)->next;
-	(*stack)->next = aux;
+	if (ft_stacksize(*stack) > 1)
+	{
+		aux = *stack;
+		*stack = (*stack)->next;
+		aux->next = (*stack)->next;
+		(*stack)->next = aux;
+	}
 }
 
-void	ft_swap_sa(t_data *data)
+void	ft_swap_sa(t_data *data, int i)
 {
 	ft_swap(&data->stack_a);
-	ft_printf("sa\n");
+	if (i == 0)
+		ft_printf("sa\n");
 }
 
-void	ft_swap_sb(t_data *data)
+void	ft_swap_sb(t_data *data, int i)
 {
 	ft_swap(&data->stack_b);
-	ft_printf("sb\n");
+	if (i == 0)
+		ft_printf("sb\n");
 }
 
 void	ft_swap_ss(t_data *data)
 {
-	ft_swap(&data->stack_a);
-	ft_swap(&data->stack_b);
+	ft_swap_sa(data, 1);
+	ft_swap_sb(data, 1);
 	ft_printf("ss\n");
 }

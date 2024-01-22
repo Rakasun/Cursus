@@ -11,6 +11,7 @@ HEADERS	= -I $(LIBFT_PATH)/include/ -I ./include
 
 SRC =  src/push_swap.c\
 	src/error.c\
+	src/utils_basic.c\
 	src/utils_check.c\
 	src/utils_utils.c\
 	src/utils_stack.c\
@@ -19,7 +20,7 @@ SRC =  src/push_swap.c\
 	src/push.c\
 	src/rotate.c\
 	src/rrotate.c\
-	src/move.c 
+	src/algorithm.c 
 OBJ = $(SRC:src/%.c=obj/%.o)
 
 BLUE = \033[1;38;5;153m

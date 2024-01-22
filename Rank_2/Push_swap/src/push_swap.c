@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:46:25 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/09 19:04:37 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/22 17:37:00 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@ void	ft_visual(t_data *data)
 
 	tmp = data->stack_a;
 	tmp2 = data->stack_b;
+	ft_printf("stack_a\n");
 	while (tmp)
 	{
-		ft_printf("Value = %d, Index = %d, Pos = %d\n", tmp->value, tmp->index, tmp->pos);
+		ft_printf("Value = %d, Index = %d, Pos = %d, Target = %d, Cost_a = %d, Cost_b = %d\n", tmp->value, tmp->index, tmp->pos, tmp->target_pos, tmp->cost_a, tmp->cost_b);
 		tmp = tmp->next;
 	}
 	ft_printf("\n");
+	ft_printf("stack_b\n");
 	while (tmp2)
 	{
-		ft_printf("Value = %d, Index = %d, Pos = %d, Target = %d\n", tmp2->value, tmp2->index, tmp2->pos, tmp2->target_pos);
+		ft_printf("Value = %d, Index = %d, Pos = %d, Target = %d, Cost_a = %d, Cost_b = %d\n", tmp2->value, tmp2->index, tmp2->pos, tmp2->target_pos, tmp2->cost_a, tmp2->cost_b);
 		tmp2 = tmp2->next;
 	}
 }

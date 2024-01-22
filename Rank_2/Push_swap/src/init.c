@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:09:51 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/09 19:13:17 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/22 19:06:04 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,66 @@ void	ft_pos(t_stack *stack)
 	}
 }
 
-void	ft_target_pos(t_stack *stack_a, t_stack *stack_b)
+void	ft_target_pos(t_stack **stack_a, t_stack **stack_b)
 {
-	int		i;
 	int		j;
 	t_stack	*tmpa;
 	t_stack	*tmpb;
+	t_stack	*aux;
 
-	tmpb = stack_b;
+	tmpb = *stack_b;
 	while (tmpb)
 	{
-		i = 0;
-		tmpa = stack_a;
-		j = tmpb->index + 1;
-		while (tmpa && tmpa->index != j)
+		tmpa = *stack_a;
+		j = tmpb->index;
+		aux = NULL;
+		while (tmpa)
 		{
+			if (aux == NULL && tmpa->index > j)
+				aux = tmpa;
+			if (tmpa->index > j && aux->index > tmpa->index)
+				aux = tmpa;
+
 			tmpa = tmpa->next;
-			i++;
 		}
-		if (!tmpa)
-			tmpb->target_pos = 0;
-		else
-			tmpb->target_pos = i;
+		if (aux == NULL)
+			while (tmpa)
+			{
+				if (aux == NULL && tmpa->index < j)
+					aux = tmpa;
+				if (tmpa->index < j && aux->index < tmpa->index)
+					aux = tmpa;
+				tmpa = tmpa->next;
+			}
+		tmpb->target_pos = aux->pos;
 		tmpb = tmpb->next;
+	}
+}
+
+void	ft_move_cost(t_data *data)
+{
+	int		size_a;
+	int		size_b;
+	int		mid_a;
+	int		mid_b;
+	t_stack	*aux;
+
+	aux = data->stack_b;
+	size_a = ft_stacksize(data->stack_a);
+	size_b = ft_stacksize(data->stack_b);
+	mid_a = ft_middle(size_a);
+	mid_b = ft_middle(size_b);
+	while (aux)
+	{
+		if (aux->pos <= mid_b)
+			aux->cost_b = aux->pos - 1;
+		else if (aux->pos > mid_b)
+			aux->cost_b = (size_b - aux->pos + 1) * -1;
+		if (aux->target_pos <= mid_a)
+			aux->cost_a = aux->target_pos - 1;
+		else if (aux->target_pos > mid_a)
+			aux->cost_a = (size_a - aux->target_pos + 1) * -1;
+		aux = aux->next;
 	}
 }
 
