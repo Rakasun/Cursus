@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:46:25 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/30 18:25:03 by yfang            ###   ########.fr       */
+/*   Updated: 2024/02/05 15:05:43 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int ac, char **av)
 	data = ft_calloc(sizeof(t_data), 1);
 	if (!data)
 		return (0);
+	if (av[1][0] == '\0')
+		ft_error();
 	else if (ac == 2)
 		data->arg = ft_split(av[1], ' ');
 	else
