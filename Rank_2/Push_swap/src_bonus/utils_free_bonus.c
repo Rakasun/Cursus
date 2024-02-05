@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   utils_free_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 15:34:08 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/30 14:40:39 by yfang            ###   ########.fr       */
+/*   Created: 2024/01/23 17:40:52 by yfang             #+#    #+#             */
+/*   Updated: 2024/01/30 18:25:17 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/push_swap_bonus.h"
 
-void	ft_push(t_stack	**stack1, t_stack **stack2)
+void	ft_free_stack(t_stack **stack)
 {
+	t_stack	*node;
 	t_stack	*aux;
 
-	if (ft_stacksize(*stack2) > 0)
+	node = *stack;
+	while (node)
 	{
-		aux = *stack2;
-		*stack2 = (*stack2)->next;
-		aux->next = *stack1;
-		*stack1 = aux;
+		aux = node->next;
+		free(node);
+		node = aux;
 	}
 }
 
-void	ft_push_pa(t_data *data, int i)
+void	ft_free2(char **dst)
 {
-	ft_push(&data->stack_a, &data->stack_b);
-	if (i == 0)
-		ft_printf("pa\n");
-}
+	int	i;
 
-void	ft_push_pb(t_data *data, int i)
-{
-	ft_push(&data->stack_b, &data->stack_a);
-	if (i == 0)
-		ft_printf("pb\n");
+	i = 0;
+	while (dst[i])
+		free(dst[i++]);
+	free(dst);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 15:33:43 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/30 14:41:41 by yfang            ###   ########.fr       */
+/*   Created: 2023/12/22 15:34:11 by yfang             #+#    #+#             */
+/*   Updated: 2024/01/30 16:01:03 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/push_swap_bonus.h"
 
-void	ft_swap(t_stack	**stack)
+void	ft_rotate(t_stack	**stack)
 {
 	t_stack	*aux;
 
@@ -20,29 +20,29 @@ void	ft_swap(t_stack	**stack)
 	{
 		aux = *stack;
 		*stack = (*stack)->next;
-		aux->next = (*stack)->next;
-		(*stack)->next = aux;
+		ft_stcklast(*stack)->next = aux;
+		aux->next = NULL;
 	}
 }
 
-void	ft_swap_sa(t_data *data, int i)
+void	ft_rotate_ra(t_data *data, int i)
 {
-	ft_swap(&data->stack_a);
+	ft_rotate(&data->stack_a);
 	if (i == 0)
-		ft_printf("sa\n");
+		ft_printf("ra\n");
 }
 
-void	ft_swap_sb(t_data *data, int i)
+void	ft_rotate_rb(t_data *data, int i)
 {
-	ft_swap(&data->stack_b);
+	ft_rotate(&data->stack_b);
 	if (i == 0)
-		ft_printf("sb\n");
+		ft_printf("rb\n");
 }
 
-void	ft_swap_ss(t_data *data, int i)
+void	ft_rotate_rr(t_data *data, int i)
 {
-	ft_swap_sa(data, 1);
-	ft_swap_sb(data, 1);
+	ft_rotate_ra(data, 1);
+	ft_rotate_rb(data, 1);
 	if (i == 0)
-		ft_printf("ss\n");
+		ft_printf("rr\n");
 }

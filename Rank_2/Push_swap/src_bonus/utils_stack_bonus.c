@@ -6,11 +6,11 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:55:30 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/23 12:48:25 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/30 16:01:19 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/push_swap_bonus.h"
 
 int	ft_stacksize(t_stack *lst)
 {

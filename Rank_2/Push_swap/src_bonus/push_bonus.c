@@ -6,11 +6,11 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:34:08 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/30 14:40:39 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/30 16:01:00 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/push_swap_bonus.h"
 
 void	ft_push(t_stack	**stack1, t_stack **stack2)
 {

@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:34:11 by yfang             #+#    #+#             */
-/*   Updated: 2024/01/22 12:54:25 by yfang            ###   ########.fr       */
+/*   Updated: 2024/01/30 14:41:00 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ void	ft_rotate_rb(t_data *data, int i)
 		ft_printf("rb\n");
 }
 
-void	ft_rotate_rr(t_data *data)
+void	ft_rotate_rr(t_data *data, int i)
 {
 	ft_rotate_ra(data, 1);
 	ft_rotate_rb(data, 1);
-	ft_printf("rr\n");
+	if (i == 0)
+		ft_printf("rr\n");
 }
