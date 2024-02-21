@@ -6,11 +6,11 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:56:31 by yfang             #+#    #+#             */
-/*   Updated: 2023/05/18 15:13:02 by yfang            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:31:48 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

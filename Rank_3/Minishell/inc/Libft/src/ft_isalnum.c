@@ -6,11 +6,13 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 15:34:47 by yfang             #+#    #+#             */
-/*   Updated: 2023/04/21 12:25:32 by yfang            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:39:35 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(char a)
+#include "../include/libft.h"
+
+int	ft_isalnum(int a)
 {
 	if ((a > 47 && a < 58) || (a > 64 && a < 91) || (a > 96 && a < 123))
 		return (1);

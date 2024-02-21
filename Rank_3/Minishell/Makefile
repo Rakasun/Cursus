@@ -1,51 +1,50 @@
 NAME = minishell
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-REMOVE = rm -rf
+CFLAGS = -Wextra -Wall -Werror
+LIBFT = ./inc/libft
+HEADERS = -I ./include -I /System/Volumes/Data/Users/$(USER)/.brew/Cellar/readline/8.2.7
+INCLUDES = -L/Users/$(USER)/.brew/opt/readline/lib -lreadline
 
-LIBFT_PATH = inc/Libft
-LIBFT_LIB_PATH = inc/Libft/libft.a
-
-HEADERS	= -I $(LIBFT_PATH)/inc/ -I ./inc/minishell.h
-
-SRC =  src/minishell.c\
+SRCS =  src/minishell.c\
 	src/utils/messages.c\
+	src/utils/t_tokens.c\
+	src/utils/is.c\
+	src/utils/libftplus.c\
 	src/init/init.c\
 	src/init/tokens.c\
-	src/utils/tokens.c
-	
-OBJ = $(SRC:src/%.c=obj/%.o)
+	src/init/tokeneizer.c\
+	src/free/free.c
 
-BLUE = \033[1;38;5;153m
-RESET = \033[0m
-U_LINE = \033[4m
-YELLOW = \033[1;38;5;226m
+CC = gcc
 
-all: $(LIBFT_LIB_PATH) $(NAME)
+OBJ_DIR = tmp
+SRC_DIR = src
 
-.SILENT: all $(LIBFT_LIB_PATH) $(NAME) $(OBJ) clean fclean re
+OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(HEADERS) -lglfw -L "/Users/${USER}/.brew/opt/glfw/lib/" -o $@
-	echo "\n$(BLUE)$(U_LINE)🥳🎊 $(NAME): Compiled 🥳🎊$(RESET) \n"
+#OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
 
+all: $(LIBFT)/libft.a $(OBJ_DIR) $(NAME)
 
-$(LIBFT_LIB_PATH):
-	$(MAKE) -C $(LIBFT_PATH)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
-obj/%.o: src/%.c
-	mkdir -p obj
-	$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
-	echo "$(YELLOW)minishell Compiling:$(RESET) $(notdir $<)"
+$(NAME): $(OBJS)
+	@$(CC) -g $(CFLAGS) $(LIBFT)/libft.a $(OBJS) $(HEADERS) $(INCLUDES) -o $(NAME)
+
+$(LIBFT)/libft.a:
+	@make -C $(LIBFT)
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/utils $(OBJ_DIR)/init $(OBJ_DIR)/builtins $(OBJ_DIR)/free
 
 clean:
-	$(REMOVE) obj
-	$(MAKE) -C $(LIBFT_PATH) clean
+	@rm -rf $(OBJ_DIR)
+	@make -C $(LIBFT) clean
 
 fclean: clean
-	$(REMOVE) $(NAME)
-	$(MAKE) -C $(LIBFT_PATH) fclean
+	@rm -rf $(NAME)
+	@make -C $(LIBFT) fclean
 
 re: fclean all
 

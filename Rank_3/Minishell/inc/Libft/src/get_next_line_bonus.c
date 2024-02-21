@@ -6,11 +6,11 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 20:01:22 by yfang             #+#    #+#             */
-/*   Updated: 2023/07/20 16:01:55 by yfang            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:33:23 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 char	*save_and_clear(char *str)
 {

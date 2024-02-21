@@ -6,11 +6,11 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:17:16 by yfang             #+#    #+#             */
-/*   Updated: 2023/05/12 12:24:12 by yfang            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:32:59 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {

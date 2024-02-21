@@ -6,15 +6,15 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:30:22 by yfang             #+#    #+#             */
-/*   Updated: 2024/02/14 18:24:24 by yfang            ###   ########.fr       */
+/*   Updated: 2024/02/21 14:18:47 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-t_stack	*ft_lasttoken(t_stack *token)
+t_tokens	*ft_lasttoken(t_tokens *token)
 {
-	t_stack	*cptoken;
+	t_tokens	*cptoken;
 
 	if (!token)
 		return (0);
@@ -35,15 +35,6 @@ void	ft_addbacktoken(t_tokens **token, t_tokens *new)
 	}
 	else
 		*token = new;
-}
-
-void	ft_addfronttoken(t_tokens **token, t_tokens *new)
-{
-	if (token && new)
-	{
-		new->next = *token;
-		*token = new;
-	}
 }
 
 t_tokens	*ft_newtoken(int type, char *str)

@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 16:40:30 by yfang             #+#    #+#             */
-/*   Updated: 2024/02/13 18:06:22 by yfang            ###   ########.fr       */
+/*   Updated: 2024/02/21 16:09:43 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 # define MINISHELL_H
 
 /*---------------------------------   LIBS   ---------------------------------*/
-# include "Libft/libft.h"
+# include "Libft/include/libft.h"
 // Global
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <stdio.h>
 
 /*--------------------------------   MACROS   --------------------------------*/
 // Types
 # define BUILTING 0
-# define ARG 1
-# define TEX 2
+# define CMD 1
+# define ARG 2
 # define DOUBLE 3
 # define SIMPLE 4
 # define OUT 5
@@ -70,13 +71,25 @@ typedef struct s_shell
 /*-------------------------------   FUNCTIONS   ------------------------------*/
 //	Init
 //		init
-void	ft_init(t_shell	*shell, char **envp);
+int			ft_init(t_shell	*shell, char **envp);
+//		tokens
+void		ft_tokenizer(t_shell *shell);
+void		ft_init_token(t_shell *shell, int type, char *str);
+//		tokenizer
+void		ft_token(t_shell *shell, int *i);
 //	Utils
 //		messages
-void	ft_welcome(void);
+void		ft_welcome(void);
 //		is
-int		ft_isspace(int c);
+int			ft_isspace(int c);
+int			ft_isspecial(char c);
 //		libftplus
-char	*ft_strndup(const char *s, size_t n);
+char		*ft_strndup(const char *s, size_t n);
+//		t_tokens
+t_tokens	*ft_newtoken(int type, char *str);
+void		ft_addbacktoken(t_tokens **token, t_tokens *new);
+t_tokens	*ft_lasttoken(t_tokens *token);
+//	Free
+void		ft_free_loop(t_shell *shell);
 
 #endif

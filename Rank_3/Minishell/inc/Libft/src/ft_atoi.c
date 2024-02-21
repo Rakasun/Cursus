@@ -6,9 +6,11 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:41:58 by yfang             #+#    #+#             */
-/*   Updated: 2023/04/26 12:05:20 by yfang            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:30:56 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../include/libft.h"
 
 int	ft_atoi(const char *str)
 {

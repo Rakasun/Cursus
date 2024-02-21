@@ -6,11 +6,11 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 12:15:50 by yfang             #+#    #+#             */
-/*   Updated: 2024/02/13 17:15:43 by yfang            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:32:37 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 char	*ft_strdup(const char *s1)
 {

@@ -6,11 +6,11 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:39:59 by yfang             #+#    #+#             */
-/*   Updated: 2023/05/12 12:23:13 by yfang            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:32:49 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 size_t	ft_strlcpy(char *rest_dst, const char *rest_src, size_t dstsize)
 {
