@@ -1,6 +1,6 @@
 NAME = minishell
 
-CFLAGS = -Wextra -Wall -Werror
+CFLAGS = -g -Wextra -Wall -Werror
 LIBFT = ./inc/libft
 HEADERS = -I ./include -I /System/Volumes/Data/Users/$(USER)/.brew/Cellar/readline/8.2.7
 INCLUDES = -L/Users/$(USER)/.brew/opt/readline/lib -lreadline

@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 16:39:05 by yfang             #+#    #+#             */
-/*   Updated: 2024/02/21 15:27:32 by yfang            ###   ########.fr       */
+/*   Updated: 2024/02/29 13:49:37 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ void	ft_view(t_shell *shell)
 	tmp = shell->tokens;
 	while (tmp)
 	{
-		ft_printf("%s, %i\n", tmp->str, tmp->type);
+		ft_printf("%s, %i, %i\n", tmp->str, tmp->type, tmp->space);
 		if (tmp->next)
 			tmp = tmp->next;
 		else
 			break ;
 	}
-
 }
 
 void	ft_loop(t_shell *shell)
