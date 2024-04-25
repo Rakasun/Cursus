@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is.c                                               :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frcastil <frcastil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/13 16:29:07 by yfang             #+#    #+#             */
-/*   Updated: 2024/04/12 18:11:06 by frcastil         ###   ########.fr       */
+/*   Created: 2023/04/25 16:41:58 by yfang             #+#    #+#             */
+/*   Updated: 2024/04/11 19:18:57 by frcastil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../include/libft.h"
 
-int	ft_isredi(int c)
+long	ft_atol(const char *str)
 {
-	if (c >= OUT && c <= HERE_DOC)
-		return (1);
-	return (0);
-}
+	int		i;
+	int		neg;
+	long	n;
 
-int	ft_ifredi(char c)
-{
-	return (c == '>' || c == '<');
-}
-
-int	ft_spandchar(char c)
-{
-	return (ft_isalnum(c) || c == '_' || c == '~');
-}
-
-int	ft_isspecial(char c)
-{
-	return (c == ' ' || c == '\"' || c == '\'' || c == '>' || c == '<'
-		|| c == '|');
-}
-
-int	ft_isspace(int c)
-{
-	return (c == ' ');
+	i = 0;
+	neg = 1;
+	n = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-')
+		neg *= -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		n = n * 10 + (str[i] - '0');
+		i++;
+	}
+	return (n * neg);
 }

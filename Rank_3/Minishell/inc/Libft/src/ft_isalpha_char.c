@@ -1,41 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is.c                                               :+:      :+:    :+:   */
+/*   ft_isalpha_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frcastil <frcastil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/13 16:29:07 by yfang             #+#    #+#             */
-/*   Updated: 2024/04/12 18:11:06 by frcastil         ###   ########.fr       */
+/*   Created: 2024/02/14 12:06:41 by frcastil          #+#    #+#             */
+/*   Updated: 2024/02/14 12:21:37 by frcastil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "libft.h"
 
-int	ft_isredi(int c)
+int	ft_isalpha_char(char c)
 {
-	if (c >= OUT && c <= HERE_DOC)
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);
-	return (0);
-}
-
-int	ft_ifredi(char c)
-{
-	return (c == '>' || c == '<');
-}
-
-int	ft_spandchar(char c)
-{
-	return (ft_isalnum(c) || c == '_' || c == '~');
-}
-
-int	ft_isspecial(char c)
-{
-	return (c == ' ' || c == '\"' || c == '\'' || c == '>' || c == '<'
-		|| c == '|');
-}
-
-int	ft_isspace(int c)
-{
-	return (c == ' ');
+	else
+		return (0);
 }
