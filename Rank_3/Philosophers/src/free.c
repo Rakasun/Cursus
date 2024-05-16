@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 16:00:12 by yfang             #+#    #+#             */
-/*   Updated: 2024/05/16 18:01:25 by yfang            ###   ########.fr       */
+/*   Updated: 2024/05/16 20:11:37 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_free(t_master *master, t_philo *philo)
 	int	i;
 
 	i = 0;
+	if (master->nbr_philo == 1)
+		pthread_mutex_unlock(philo->l_fork);
 	while (i < master->nbr_philo)
 	{
 		pthread_join(philo[i].thread, NULL);
