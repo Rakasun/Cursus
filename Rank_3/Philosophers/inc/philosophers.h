@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:46:57 by yfang             #+#    #+#             */
-/*   Updated: 2024/05/16 14:56:23 by yfang            ###   ########.fr       */
+/*   Updated: 2024/05/16 17:36:27 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,57 +35,61 @@
 /*--------------------------------   STRUCTS   -------------------------------*/
 typedef struct s_master
 {
-	int				nbr_philo;
+	int					nbr_philo;
 	long long			time_to_die;
 	long long			time_to_eat;
 	long long			time_to_sleep;
-	int				nb_must_eat;
+	int					nb_must_eat;
 	long long			start_time;
-	int				dead;
-	int				finish;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	*mutex_dead;
-	pthread_mutex_t	*mutex_finish;
+	int					dead;
+	int					finish;
+	pthread_mutex_t		*forks;
+	pthread_mutex_t		*mutex_dead;
+	pthread_mutex_t		*mutex_finish;
+	pthread_mutex_t		*mutex_print;
 }	t_master;
 
 typedef struct s_philo
 {
-	pthread_t		thread;
-	int				id;
+	pthread_t			thread;
+	int					id;
 	long long			last_eat;
-	int				nbr_eat;
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*l_fork;
-	pthread_mutex_t	*mutex_last_eat;
-	t_master		*master;
+	int					nbr_eat;
+	pthread_mutex_t		*r_fork;
+	pthread_mutex_t		*l_fork;
+	pthread_mutex_t		*mutex_last_eat;
+	t_master			*master;
 }	t_philo;
 
 /*-------------------------------   FUNCTIONS   ------------------------------*/
-void	ft_loop(t_master *master, t_philo *philo);
+void		ft_loop(t_master *master, t_philo *philo);
 
 //	philosophers_utils.c
-int		ft_check_av(int ac, char **av);
-size_t	get_time(void);
-void	ft_free_forks(t_master *master);
-int		ft_all_ok(t_master *master);
-void	ft_usleep(t_philo *philo, t_master *master, long long time_to);
+int			ft_check_av(int ac, char **av);
+size_t		get_time(void);
+int			ft_all_ok(t_master *master);
+void		ft_usleep(t_philo *philo, t_master *master, long long time_to);
 
 //	minilibft.c
-long long	ft_atol(const char *str);
-int		ft_is_num(char *a);
-int		ft_strcmp(const char *s1, const char *s2);
+long		ft_atol(const char *str);
+int			ft_is_num(char *a);
+int			ft_strcmp(const char *s1, const char *s2);
 
 //	init.c
-void	ft_init_master(t_master *master, char **av);
-void	ft_init_philo(t_master *master, t_philo *philo);
-void	ft_init_thread(t_master *master, t_philo *philo);
+void		ft_init_master(t_master *master, char **av);
+void		ft_init_philo(t_master *master, t_philo *philo);
+void		ft_init_thread(t_master *master, t_philo *philo);
 
 //	rutine.c
-void	*ft_rutine(void *arg);
+void		*ft_rutine(void *arg);
 
 //	msg.c
-void	ft_error(int i);
-void	ft_msg(t_philo *philo, char *str, char *color);
+void		ft_error(int i);
+void		ft_msg(t_philo *philo, char *str, char *color);
 long long	ft_t(t_philo *philo);
+
+//	free.c
+void		ft_free_forks(t_master *master);
+void		ft_free(t_master *master, t_philo *philo);
 
 #endif

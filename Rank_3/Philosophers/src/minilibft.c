@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:54:37 by yfang             #+#    #+#             */
-/*   Updated: 2024/05/16 14:56:23 by yfang            ###   ########.fr       */
+/*   Updated: 2024/05/16 15:48:00 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s1[i] || s2[i])
@@ -38,11 +38,11 @@ int	ft_is_num(char *a)
 	return (1);
 }
 
-long long	ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
 	int		i;
 	int		neg;
-	long long	n;
+	long	n;
 
 	i = 0;
 	neg = 1;

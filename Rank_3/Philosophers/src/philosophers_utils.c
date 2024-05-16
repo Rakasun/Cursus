@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 13:13:57 by yfang             #+#    #+#             */
-/*   Updated: 2024/05/16 14:56:23 by yfang            ###   ########.fr       */
+/*   Updated: 2024/05/16 17:28:09 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_usleep(t_philo *philo, t_master *master, long long time_to)
 {
 	while (ft_all_ok(master) && ft_t(philo) < time_to)
-		usleep(100);
+		usleep(50);
 }
 
 int	ft_all_ok(t_master *master)
@@ -31,18 +31,6 @@ int	ft_all_ok(t_master *master)
 	pthread_mutex_unlock(master->mutex_dead);
 	pthread_mutex_unlock(master->mutex_finish);
 	return (i);
-}
-
-void	ft_free_forks(t_master *master)
-{
-	int	i;
-
-	i = 0;
-	while (i < master->nbr_philo)
-		if (!&master->forks[i])
-			pthread_mutex_destroy(&master->forks[i++]);
-	free(master->forks);
-	ft_error(0);
 }
 
 size_t	get_time(void)

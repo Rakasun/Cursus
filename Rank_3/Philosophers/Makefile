@@ -1,7 +1,7 @@
 NAME = philo
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -pthread -fsanitize=thread -g
 REMOVE = rm -rf
 
 
@@ -12,7 +12,8 @@ SRC =  src/philosophers.c\
 	src/minilibft.c\
 	src/init.c\
 	src/rutine.c\
-	src/msg.c
+	src/msg.c\
+	src/free.c
 
 OBJ = $(SRC:src/%.c=obj/%.o)
 

@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:34:55 by yfang             #+#    #+#             */
-/*   Updated: 2024/05/16 15:04:30 by yfang            ###   ########.fr       */
+/*   Updated: 2024/05/16 18:21:09 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,15 @@ long long	ft_t(t_philo *philo)
 
 void	ft_msg(t_philo *philo, char *str, char *color)
 {
+	long long	time;
+
+	time = ft_t(philo);// cambiar nombre por ft_time
+	pthread_mutex_lock(philo->master->mutex_print);
 	if (!ft_strcmp(color, RED))
-		printf("%s%lld %d %s%s\n", color, ft_t(philo), philo->id, str, END);
+		printf("%s%lld %d %s%s\n", color, time, philo->id, str, END);
 	else if (ft_all_ok(philo->master))
-		printf("%s%lld %d %s%s\n", color, ft_t(philo), philo->id, str, END);
+		printf("%s%lld %d %s%s\n", color, time, philo->id, str, END);
+	pthread_mutex_unlock(philo->master->mutex_print);
 }
 
 void	ft_error(int i)
