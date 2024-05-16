@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:46:59 by yfang             #+#    #+#             */
-/*   Updated: 2024/05/16 17:40:16 by yfang            ###   ########.fr       */
+/*   Updated: 2024/05/16 19:45:56 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_dead(t_master *master, t_philo *philo)
 	long long	time;
 
 	pthread_mutex_lock(philo->mutex_last_eat);
-	time = ft_t(philo) - philo->last_eat;
+	time = ft_time(philo) - philo->last_eat;
 	pthread_mutex_unlock(philo->mutex_last_eat);
 	if (time >= master->time_to_die)
 	{

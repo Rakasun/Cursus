@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:46:57 by yfang             #+#    #+#             */
-/*   Updated: 2024/05/16 17:36:27 by yfang            ###   ########.fr       */
+/*   Updated: 2024/05/16 19:45:56 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void		*ft_rutine(void *arg);
 //	msg.c
 void		ft_error(int i);
 void		ft_msg(t_philo *philo, char *str, char *color);
-long long	ft_t(t_philo *philo);
+long long	ft_time(t_philo *philo);
 
 //	free.c
 void		ft_free_forks(t_master *master);

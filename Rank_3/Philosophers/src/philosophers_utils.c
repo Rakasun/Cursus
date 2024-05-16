@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 13:13:57 by yfang             #+#    #+#             */
-/*   Updated: 2024/05/16 17:28:09 by yfang            ###   ########.fr       */
+/*   Updated: 2024/05/16 19:45:56 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_usleep(t_philo *philo, t_master *master, long long time_to)
 {
-	while (ft_all_ok(master) && ft_t(philo) < time_to)
+	while (ft_all_ok(master) && ft_time(philo) < time_to)
 		usleep(50);
 }
 

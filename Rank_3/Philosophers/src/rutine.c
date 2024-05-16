@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:14:46 by yfang             #+#    #+#             */
-/*   Updated: 2024/05/16 18:55:05 by yfang            ###   ########.fr       */
+/*   Updated: 2024/05/16 19:47:25 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_eat(t_philo *philo)
 	ft_hand(philo);
 	ft_msg(philo, "is eating", GREEN);
 	pthread_mutex_lock(philo->mutex_last_eat);
-	philo->last_eat = ft_t(philo);
+	philo->last_eat = ft_time(philo);
 	pthread_mutex_unlock(philo->mutex_last_eat);
 	philo->nbr_eat++;
 	pthread_mutex_lock(master->mutex_finish);
@@ -52,8 +52,11 @@ void	ft_eat(t_philo *philo)
 
 void	ft_sleep(t_philo *philo)
 {
+	long long	time;
+
+	time = ft_time(philo) + philo->master->time_to_sleep;
 	ft_msg(philo, "is sleeping", BLUE);
-	ft_usleep(philo, philo->master, ft_t(philo) + philo->master->time_to_sleep);
+	ft_usleep(philo, philo->master, time);
 }
 
 void	ft_think(t_philo *philo)
@@ -64,7 +67,7 @@ void	ft_think(t_philo *philo)
 	tmp = philo->master;
 	time = (tmp->time_to_die - (tmp->time_to_eat + tmp->time_to_sleep)) / 4;
 	ft_msg(philo, "is thinking", YELLOW);
-	ft_usleep(philo, philo->master, ft_t(philo) + time);
+	ft_usleep(philo, philo->master, ft_time(philo) + time);
 }
 
 void	*ft_rutine(void *arg)
@@ -72,10 +75,10 @@ void	*ft_rutine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	while (ft_t(philo) < 0)
+	while (ft_time(philo) < 0)
 	{
 		pthread_mutex_lock(philo->mutex_last_eat);
-		philo->last_eat = ft_t(philo);
+		philo->last_eat = ft_time(philo);
 		pthread_mutex_unlock(philo->mutex_last_eat);
 		usleep(20);
 	}
