@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 19:14:48 by yfang             #+#    #+#             */
-/*   Updated: 2024/05/16 17:37:57 by yfang            ###   ########.fr       */
+/*   Updated: 2024/05/17 13:12:47 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	ft_init_master(t_master *master, char **av)
 		master->nb_must_eat = ft_atol(av[5]);
 	else
 		master->nb_must_eat = -1;
-	master->start_time = get_time() + master->nbr_philo * 20;
+	master->start_time = get_time();
 	ft_init_mutex_master(master);
 	master->dead = 0;
 	master->finish = 0;
