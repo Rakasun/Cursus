@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:03:09 by yfang             #+#    #+#             */
-/*   Updated: 2023/05/12 12:21:26 by yfang            ###   ########.fr       */
+/*   Updated: 2024/05/28 13:20:17 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	{
 		if (a[i] != b[i])
 			return (a[i] - b[i]);
-			i++;
+		i++;
 	}
 	return (0);
 }
