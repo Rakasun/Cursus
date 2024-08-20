@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Account.hpp"
+#include "Account.hpp"
 #include <iostream>
 #include <iomanip>
 #include <ctime>
@@ -21,7 +21,7 @@ int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
 void Account::_displayTimestamp() {
-    std::time_t t = std::time(nullptr);
+    std::time_t t = std::time(NULL);
     std::tm* now = std::localtime(&t);
     std::cout << "[" << (now->tm_year + 1900)
               << std::setw(2) << std::setfill('0') << now->tm_mon + 1
@@ -36,12 +36,12 @@ Account::Account(int initial_deposit) : _accountIndex(_nbAccounts), _amount(init
     _nbAccounts++;
     _totalAmount += initial_deposit;
     _displayTimestamp();
-    std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";created" << std::endl;
+    std::cout << " index:" << _accountIndex << ";amount:" << _amount << ";created" << std::endl;
 }
 
 Account::~Account() {
     _displayTimestamp();
-    std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";closed" << std::endl;
+    std::cout << " index:" << _accountIndex << ";amount:" << _amount << ";closed" << std::endl;
     _nbAccounts--;
     _totalAmount -= _amount;
 }

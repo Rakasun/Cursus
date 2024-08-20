@@ -5,7 +5,7 @@ CFLAGS = -std=c++98 -Wall -Wextra -Werror -Iinc
 REMOVE = rm -rf
 
 SRC = src/Account.cpp\
-	src/test.cpp
+	src/tests.cpp
 OBJS = $(addprefix obj/, $(SRC:.cpp=.o))
 
 BLUE = \033[1;38;5;153m
