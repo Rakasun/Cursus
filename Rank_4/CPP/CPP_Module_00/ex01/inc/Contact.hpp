@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 17:09:36 by yfang             #+#    #+#             */
-/*   Updated: 2024/08/08 17:02:12 by yfang            ###   ########.fr       */
+/*   Updated: 2024/08/23 14:16:26 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@
 class	Contact{
 	private:
 		std::string data[5];
-    public:
-        Contact();
-        ~Contact();
-        std::string getData(int index) const { return data[index]; }
-        bool    set_data();
+  public:
+      Contact();
+      ~Contact();
+      std::string getData(int index) const { return data[index]; }
+      bool    set_data();
 };
 
 #endif
