@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 11:34:32 by yfang             #+#    #+#             */
-/*   Updated: 2024/09/17 15:56:42 by yfang            ###   ########.fr       */
+/*   Updated: 2024/09/20 10:53:00 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,27 +77,39 @@ Fixed   Fixed::operator+(const Fixed &copy) {
 }
 
 bool    Fixed::operator!=(const Fixed &copy) {
-    return _fixed_ptr != copy._fixed_ptr;
+    if (this->getRawBits() != copy.getRawBits())
+        return true;
+    return false;
 }
 
 bool    Fixed::operator==(const Fixed &copy) {
-    return _fixed_ptr == copy._fixed_ptr;
+    if (this->getRawBits() == copy.getRawBits())
+        return true;
+    return false;
 }
 
 bool    Fixed::operator<=(const Fixed &copy) {
-    return _fixed_ptr <= copy._fixed_ptr;
+    if (this->getRawBits() <= copy.getRawBits())
+        return true;
+    return false;
 }
 
 bool    Fixed::operator>=(const Fixed &copy) {
-    return _fixed_ptr >= copy._fixed_ptr;
+    if (this->getRawBits() >= copy.getRawBits())
+        return true;
+    return false;
 }
 
 bool    Fixed::operator<(const Fixed &copy) {
-    return _fixed_ptr < copy._fixed_ptr;
+    if (this->getRawBits() < copy.getRawBits())
+        return true;
+    return  false;
 }
 
 bool    Fixed::operator>(const Fixed &copy) {
-    return _fixed_ptr > copy._fixed_ptr;
+    if (this->getRawBits() > copy.getRawBits())
+        return true;
+    return false;
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &data) {

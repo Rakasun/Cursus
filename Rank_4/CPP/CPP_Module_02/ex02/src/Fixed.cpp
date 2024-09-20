@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:14:09 by yfang             #+#    #+#             */
-/*   Updated: 2024/09/13 11:35:58 by yfang            ###   ########.fr       */
+/*   Updated: 2024/09/20 10:53:01 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,37 +77,37 @@ Fixed   Fixed::operator+(const Fixed &copy) {
 }
 
 bool    Fixed::operator!=(const Fixed &copy) {
-    if (this != &copy)
+    if (this->getRawBits() != copy.getRawBits())
         return true;
     return false;
 }
 
 bool    Fixed::operator==(const Fixed &copy) {
-    if (this == &copy)
+    if (this->getRawBits() == copy.getRawBits())
         return true;
     return false;
 }
 
 bool    Fixed::operator<=(const Fixed &copy) {
-    if (this <= &copy)
+    if (this->getRawBits() <= copy.getRawBits())
         return true;
     return false;
 }
 
 bool    Fixed::operator>=(const Fixed &copy) {
-    if (this >= &copy)
+    if (this->getRawBits() >= copy.getRawBits())
         return true;
     return false;
 }
 
 bool    Fixed::operator<(const Fixed &copy) {
-    if (this < &copy)
+    if (this->getRawBits() < copy.getRawBits())
         return true;
     return  false;
 }
 
 bool    Fixed::operator>(const Fixed &copy) {
-    if (this > &copy)
+    if (this->getRawBits() > copy.getRawBits())
         return true;
     return false;
 }
