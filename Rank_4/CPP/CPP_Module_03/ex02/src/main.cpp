@@ -6,11 +6,11 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:13:55 by yfang             #+#    #+#             */
-/*   Updated: 2024/09/26 13:21:53 by yfang            ###   ########.fr       */
+/*   Updated: 2024/09/26 13:38:03 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ScavTrap.hpp"
+#include "../inc/FragTrap.hpp"
 
 int main(void) {
     ClapTrap trap ("Voldemore");
