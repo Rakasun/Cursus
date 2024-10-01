@@ -3,11 +3,12 @@ NAME = ClapTrap
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror -Iinc
 REMOVE = rm -rf
-
+ 
 SRC = src/main.cpp\
 	src/ClapTrap.cpp\
 	src/ScavTrap.cpp\
-	src/FragTrap.cpp
+	src/FragTrap.cpp\
+	src/DiamondTrap.cpp
 OBJS = $(addprefix obj/, $(SRC:.cpp=.o))
 
 BLUE = \033[1;38;5;153m

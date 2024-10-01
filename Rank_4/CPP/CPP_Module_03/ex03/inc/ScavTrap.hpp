@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 15:50:34 by yfang             #+#    #+#             */
-/*   Updated: 2024/09/26 13:47:30 by yfang            ###   ########.fr       */
+/*   Updated: 2024/09/27 11:01:01 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
     public:
         ScavTrap(void);
         ScavTrap(std::string name);
