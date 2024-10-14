@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 10:26:50 by yfang             #+#    #+#             */
-/*   Updated: 2024/10/04 11:09:39 by yfang            ###   ########.fr       */
+/*   Updated: 2024/10/14 17:03:08 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main(void) {
 	delete i;
 
 	const WrongAnimal*	wa = new WrongAnimal();
-	const WrongCat*		wc = new WrongCat();
+	const WrongAnimal*	wc = new WrongCat();
 
 	wa->makeSound();
 	wc->makeSound();
