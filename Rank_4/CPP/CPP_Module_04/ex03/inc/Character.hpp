@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:52:43 by yfang             #+#    #+#             */
-/*   Updated: 2024/10/10 17:20:32 by yfang            ###   ########.fr       */
+/*   Updated: 2024/10/16 18:58:00 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ class Character : public ICharacter {
     private:
         std::string _name;
         AMateria    *_inventory[4];
+        AMateria    *_trash[4];
         int         _count;
+        int         _trashCount;
     public:
         Character(void);
         Character(const std::string name);

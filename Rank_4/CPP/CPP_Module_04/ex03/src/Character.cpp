@@ -6,28 +6,36 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:06:19 by yfang             #+#    #+#             */
-/*   Updated: 2024/10/10 18:46:19 by yfang            ###   ########.fr       */
+/*   Updated: 2024/10/16 19:08:34 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/MateriaSource.hpp"
 
-Character::Character(void) : _name(""), _count(0) {
-    for (int i = 0; i < 4; i++)
+Character::Character(void) : _name(""), _count(0), _trashCount(0) {
+    for (int i = 0; i < 4; i++) {
         _inventory[i] = NULL;
+        _trash[i] = NULL;
+    }
 }
 
-Character::Character(const std::string name) : _name(name), _count(0) {
-    for (int i = 0; i < 4; i++)
+Character::Character(const std::string name) : _name(name), _count(0), _trashCount(0) {
+    for (int i = 0; i < 4; i++) {
         _inventory[i] = NULL;
+        _trash[i] = NULL;
+    }
 }
 
-Character::Character(const Character &other) : _name(other.getName()), _count(0) {
+Character::Character(const Character &other) : _name(other.getName()), _count(0), _trashCount(0) {
     for (int i = 0; i < 4; i++) {
         if (i < other._count)
             equip(other._inventory[i]->clone());
         else
             _inventory[i] = NULL;
+        if (i < other._trashCount)
+            equip(other._trash[i]->clone());
+        else
+            _trash[i] = NULL;
     }
 }
 
@@ -35,20 +43,32 @@ Character   &Character::operator=(const Character &other) {
     if (this != &other) {
         _name = other.getName();
         _count = other._count;
+        _trashCount = other._trashCount;
         for (int i = 0; i < 4; i++) {
-            delete _inventory[i];
+            if (_inventory[i] != NULL)
+                delete _inventory[i];
             if (i < other._count)
                 equip(other._inventory[i]->clone());
             else
                 _inventory[i] = NULL;
+            if (_trash[i] != NULL)
+                delete _trash[i];
+            if (i < other._trashCount)
+                equip(other._trash[i]->clone());
+            else
+                _trash[i] = NULL;
         }
     }
     return *this;
 }
 
 Character::~Character(void) {
-    for (int i = 0; i < 4; i++)
-        delete _inventory[i];
+    for (int i = 0; i < 4; i++) {
+        if (_inventory[i] != NULL)
+            delete _inventory[i];
+        if (_trash[i] != NULL)
+            delete _trash[i];
+    }
 }
 
 const std::string   &Character::getName(void) const {
@@ -68,8 +88,11 @@ void    Character::equip(AMateria *m) {
 
 void    Character::unequip(int idx) {
     if (idx >= 0 && idx < 4) {
-        if (_inventory[idx] != NULL)
+        if (_inventory[idx] != NULL) {
+            AMateria    *copy;
+            copy = _inventory[idx];
             delete _inventory[idx];
+        }
         _inventory[idx] = NULL;
         _count--;
     } else

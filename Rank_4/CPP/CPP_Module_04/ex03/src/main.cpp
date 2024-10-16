@@ -6,14 +6,14 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 17:55:30 by yfang             #+#    #+#             */
-/*   Updated: 2024/10/10 18:49:59 by yfang            ###   ########.fr       */
+/*   Updated: 2024/10/16 19:09:08 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/MateriaSource.hpp"
 
 int main(void) {
-    /* IMateriaSource* src = new MateriaSource();
+    IMateriaSource* src = new MateriaSource();
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());
 
@@ -35,9 +35,9 @@ int main(void) {
 
     delete bob;
     delete me;
-    delete src; */
+    delete src;
 
-    IMateriaSource *src = new MateriaSource();
+    /* IMateriaSource *src = new MateriaSource();
     src->learnMateria(new Cure());
 
     AMateria *tmp;
@@ -63,7 +63,7 @@ int main(void) {
 
     delete bob;
     delete me;
-    delete src;
+    delete src; */
 
 
     return 0;
