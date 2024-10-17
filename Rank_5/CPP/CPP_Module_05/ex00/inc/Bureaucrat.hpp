@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:48:58 by yfang             #+#    #+#             */
-/*   Updated: 2024/10/16 16:12:31 by yfang            ###   ########.fr       */
+/*   Updated: 2024/10/17 16:45:34 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class Bureaucrat {
     public:
         Bureaucrat(void);
         Bureaucrat(const Bureaucrat &other);
+        Bureaucrat(const std::string &name, int grade);
         Bureaucrat  &operator=(const Bureaucrat &other);
         ~Bureaucrat(void);
 
@@ -51,5 +52,7 @@ class Bureaucrat {
                 const char  *what() const throw();
         };
 };
+
+std::ostream    &operator<<(std::ostream &out, const Bureaucrat &b);
 
 #endif

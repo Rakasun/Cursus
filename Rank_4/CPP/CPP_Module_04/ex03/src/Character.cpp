@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:06:19 by yfang             #+#    #+#             */
-/*   Updated: 2024/10/17 14:12:51 by yfang            ###   ########.fr       */
+/*   Updated: 2024/10/17 17:36:52 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ Character   &Character::operator=(const Character &other) {
                 _inventory[i] = NULL;
             if (_trash[i] != NULL)
                 delete _trash[i];
-            if (i < other._trashCount)
+             if (other._trash[i] != NULL)
                 equip(other._trash[i]->clone());
             else
                 _trash[i] = NULL;
@@ -89,6 +89,10 @@ void    Character::equip(AMateria *m) {
 void    Character::unequip(int idx) {
     if (idx >= 0 && idx < 4) {
         if (_inventory[idx] != NULL) {
+            if (_trashCount == 4)
+                _trashCount = 0;
+            if (_trash[_trashCount] != NULL)
+                delete _trash[_trashCount];
             _trash[_trashCount] = _inventory[idx];
             _trashCount++;
         }
