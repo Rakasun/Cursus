@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:06:19 by yfang             #+#    #+#             */
-/*   Updated: 2024/10/16 19:08:34 by yfang            ###   ########.fr       */
+/*   Updated: 2024/10/17 14:12:51 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,8 @@ void    Character::equip(AMateria *m) {
 void    Character::unequip(int idx) {
     if (idx >= 0 && idx < 4) {
         if (_inventory[idx] != NULL) {
-            AMateria    *copy;
-            copy = _inventory[idx];
-            delete _inventory[idx];
+            _trash[_trashCount] = _inventory[idx];
+            _trashCount++;
         }
         _inventory[idx] = NULL;
         _count--;
