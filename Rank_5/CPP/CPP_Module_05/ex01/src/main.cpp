@@ -6,64 +6,69 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:41:49 by yfang             #+#    #+#             */
-/*   Updated: 2024/10/17 17:02:24 by yfang            ###   ########.fr       */
+/*   Updated: 2024/12/02 19:13:17 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
+#include "../inc/Form.hpp"
 
-int main(void) {
-    // Case 1: Create a valid Bureaucrat with a name and grade
+int main() {
     try {
-        Bureaucrat b1("John", 50);
-        std::cout << "Bureaucrat created: " << b1 << std::endl; // Display the Bureaucrat using the << operator
-        
-        // Case 2: Increment and decrement the grade
-        b1.incrementGrade();
-        std::cout << "After incrementing grade: " << b1 << std::endl;
+        // Create a Bureaucrat with a valid grade
+        Bureaucrat bob("Bob", 50);
+        std::cout << bob << std::endl;
 
-        b1.decrementGrade();
-        std::cout << "After decrementing grade: " << b1 << std::endl;
-        
+        // Create a Form with valid grades for signing and execution
+        Form contract("Contract", 45, 30);
+        std::cout << contract << std::endl;
+
+        // Attempt to have Bob sign the form (his grade is too low)
+        bob.signForm(contract);
+
+        // Increment Bob's grade so he can sign the form
+        bob.incrementGrade();
+        std::cout << bob << " after incrementing grade." << std::endl;
+
+        // Attempt to sign the form again
+        bob.signForm(contract);
+
+        // Check the form's status
+        std::cout << contract << std::endl;
+
+        // Test boundary: create a Bureaucrat with an out-of-range grade
+        Bureaucrat alice("Alice", 151); // This should throw an exception
     } catch (const std::exception &e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-
-    // Case 3: Try to create a Bureaucrat with an invalid grade (too low)
-    try {
-        Bureaucrat b2("Alice", 0);
-        std::cout << "Bureaucrat created: " << b2 << std::endl;
-    } catch (const std::exception &e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-
-    // Case 4: Try to create a Bureaucrat with an invalid grade (too high)
-    try {
-        Bureaucrat b3("Bob", 151);
-        std::cout << "Bureaucrat created: " << b3 << std::endl;
-    } catch (const std::exception &e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-
-    // Case 5: Test increments and decrements at the boundaries
-    try {
-        Bureaucrat b4("Charlie", 1);
-        std::cout << "Bureaucrat created: " << b4 << std::endl;
-
-        b4.incrementGrade();
-        std::cout << "After incrementing grade: " << b4 << std::endl;
-    } catch (const std::exception &e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << RED << "Error: " << e.what() << RESET << std::endl;
     }
 
     try {
-        Bureaucrat b5("David", 150);
-        std::cout << "Bureaucrat created: " << b5 << std::endl;
-
-        b5.decrementGrade();
-        std::cout << "After decrementing grade: " << b5 << std::endl;
+        // Test boundary: create a Form with an invalid grade
+        Form invalidForm("InvalidForm", 0, 30); // This should throw an exception
     } catch (const std::exception &e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << RED << "Error: " << e.what() << RESET << std::endl;
+    }
+
+    try {
+        // Create a Bureaucrat with the lowest possible grade
+        Bureaucrat tom("Tom", 150);
+        std::cout << tom << std::endl;
+
+        // Attempt to decrement Tom's grade (should throw an exception)
+        tom.decrementGrade();
+    } catch (const std::exception &e) {
+        std::cerr << RED << "Error: " << e.what() << RESET << std::endl;
+    }
+
+    try {
+        // Create a Bureaucrat with the highest possible grade
+        Bureaucrat jane("Jane", 1);
+        std::cout << jane << std::endl;
+
+        // Attempt to increment Jane's grade (should throw an exception)
+        jane.incrementGrade();
+    } catch (const std::exception &e) {
+        std::cerr << RED << "Error: " << e.what() << RESET << std::endl;
     }
 
     return 0;

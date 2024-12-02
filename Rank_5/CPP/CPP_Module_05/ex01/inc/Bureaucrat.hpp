@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:48:58 by yfang             #+#    #+#             */
-/*   Updated: 2024/10/17 16:45:34 by yfang            ###   ########.fr       */
+/*   Updated: 2024/12/02 18:53:11 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
 
+class Form;
+
 class Bureaucrat {
     private:
         const std::string   _name;
@@ -42,6 +44,8 @@ class Bureaucrat {
         int                 getGrade(void) const;
         void                incrementGrade(void);
         void                decrementGrade(void);
+        
+        void                signForm(Form &form) const;
 
         class GradeTooHighException : public std::exception {
             public:

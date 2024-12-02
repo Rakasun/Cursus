@@ -5,7 +5,8 @@ CFLAGS = -std=c++98 -Wall -Wextra -Werror -Iinc
 REMOVE = rm -rf
  
 SRC = src/main.cpp\
-	src/Bureaucrat.cpp
+	src/Bureaucrat.cpp\
+	src/Form.cpp
 
 OBJS = $(addprefix obj/, $(SRC:.cpp=.o))
 
