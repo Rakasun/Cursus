@@ -1,11 +1,10 @@
-NAME = base
+NAME = array
 
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror -Iinc
 REMOVE = rm -rf
  
 SRC = src/main.cpp\
-	src/Base.cpp
 
 OBJS = $(addprefix obj/, $(SRC:.cpp=.o))
 
