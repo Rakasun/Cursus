@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 16:15:02 by yfang             #+#    #+#             */
-/*   Updated: 2025/03/19 16:48:15 by yfang            ###   ########.fr       */
+/*   Updated: 2025/03/19 19:35:04 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <vector>
 #include <list>
 
-int main() {
+int main(void) {
     try {
         std::cout << "Testing with std::vector<int>..." << std::endl;
         std::vector<int> vec;
