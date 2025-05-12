@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:06:29 by yfang             #+#    #+#             */
-/*   Updated: 2025/04/22 19:02:50 by yfang            ###   ########.fr       */
+/*   Updated: 2025/05/12 18:18:43 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class PmergeMe {
         std::vector<int>    _vec;
         std::deque<int>     _deq;
         PmergeMe(void);
-        void    sortVector(std::vector<int> &vec);
-        void    sortDeque(std::deque<int> &deq);
+        void    sortVector(std::vector<int> &vec, size_t n_pairs);
+        void    sortDeque(std::deque<int> &deq, size_t n_pairs);
     public:
         PmergeMe(int ac, char** av);
         PmergeMe(const PmergeMe &other);

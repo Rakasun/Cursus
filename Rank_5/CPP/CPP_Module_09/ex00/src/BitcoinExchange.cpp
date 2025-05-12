@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:29:21 by yfang             #+#    #+#             */
-/*   Updated: 2025/03/26 18:55:06 by yfang            ###   ########.fr       */
+/*   Updated: 2025/04/23 18:23:45 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,44 @@ float   BitcoinExchange::getExchangeRate(const std::string &date) {
     return it->second;
 }
 
+bool isLeapYear(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+bool checkDate(std::string &date) {
+    if (date.empty() || date.length() != 10 || date[4] != '-' || date[7] != '-')
+        return false;
+    
+    std::string yearStr = date.substr(0, 4);
+    std::string monthStr = date.substr(5, 2);
+    std::string dayStr = date.substr(8, 2);
+
+    for (size_t i = 0; i < 4; ++i)
+        if (!isdigit(yearStr[i]))
+            return false;
+    
+    for (size_t i = 0; i < 2; ++i)
+        if (!isdigit(monthStr[i]) || !isdigit(dayStr[i]))
+            return false;
+
+    int year = std::atoi(yearStr.c_str());
+    int month = std::atoi(monthStr.c_str());
+    int day = std::atoi(dayStr.c_str());
+
+    if (month < 1 || month > 12)
+        return false;
+    
+    int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+    if (month == 2 && isLeapYear(year))
+        daysInMonth[1] = 29;
+
+    if (day < 1 || day > daysInMonth[month - 1])
+        return false;
+    
+    return true;
+}
+
 void    BitcoinExchange::processInputFile(const std::string &filename) {
     std::ifstream file(filename.c_str());
     if (!file.is_open())
@@ -67,7 +105,7 @@ void    BitcoinExchange::processInputFile(const std::string &filename) {
         std::getline(ss, date, '|');
         ss >> value;
 
-        if (date.empty() || !ss) {
+        if (checkDate(date) || !ss) {
             std::cerr << "Error: bad input => " << line << std::endl;
             continue;
         }

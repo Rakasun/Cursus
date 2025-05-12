@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:31:48 by yfang             #+#    #+#             */
-/*   Updated: 2025/04/09 15:10:17 by yfang            ###   ########.fr       */
+/*   Updated: 2025/04/23 17:28:56 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class RPN {
 
         bool    isOperator(char c);
         void    applyOperator(char c);
-        RPN(void);
     public:
+        RPN(void);
         RPN(const RPN &other);
         RPN &operator=(const RPN &other);
         ~RPN(void);
