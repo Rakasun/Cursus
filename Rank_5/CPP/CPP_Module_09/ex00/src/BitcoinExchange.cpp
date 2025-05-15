@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:29:21 by yfang             #+#    #+#             */
-/*   Updated: 2025/04/23 18:23:45 by yfang            ###   ########.fr       */
+/*   Updated: 2025/05/15 18:19:22 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ bool isLeapYear(int year) {
 }
 
 bool checkDate(std::string &date) {
-    if (date.empty() || date.length() != 10 || date[4] != '-' || date[7] != '-')
+    if (date.empty() || date.length() != 11 || date[4] != '-' || date[7] != '-' || date[10] != ' ')
         return false;
-    
+
     std::string yearStr = date.substr(0, 4);
     std::string monthStr = date.substr(5, 2);
     std::string dayStr = date.substr(8, 2);
@@ -105,7 +105,7 @@ void    BitcoinExchange::processInputFile(const std::string &filename) {
         std::getline(ss, date, '|');
         ss >> value;
 
-        if (checkDate(date) || !ss) {
+        if (!checkDate(date) || !ss) {
             std::cerr << "Error: bad input => " << line << std::endl;
             continue;
         }

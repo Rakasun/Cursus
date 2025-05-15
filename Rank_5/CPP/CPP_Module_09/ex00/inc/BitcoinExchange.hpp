@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:20:21 by yfang             #+#    #+#             */
-/*   Updated: 2025/03/26 18:43:30 by yfang            ###   ########.fr       */
+/*   Updated: 2025/05/15 18:07:31 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sstream>
 # include <map>
 # include <string>
+# include <cstdlib>
 
 class BitcoinExchange {
     private:
