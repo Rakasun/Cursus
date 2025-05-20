@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:29:21 by yfang             #+#    #+#             */
-/*   Updated: 2025/05/15 18:19:22 by yfang            ###   ########.fr       */
+/*   Updated: 2025/05/20 18:49:28 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ float   BitcoinExchange::getExchangeRate(const std::string &date) {
 
     if (it != _btcRates.begin() && (it == _btcRates.end() || it->first != date))
         --it;
+
+    if (it == _btcRates.begin() && it->first > date) {
+        std::cerr << "Error: date too early, not found in database." << std::endl;
+        return -1;
+    }
+
     if (it == _btcRates.end()) {
         std::cerr << "Error: date not found in database." << std::endl;
         return -1;
@@ -90,6 +96,33 @@ bool checkDate(std::string &date) {
     return true;
 }
 
+bool checkValue(std::string valuestr) {
+    size_t i = 0;
+    bool decimalPoint = false;
+    bool digitFound = false;
+
+    while (i < valuestr.length() && isspace(valuestr[i]))
+        i++;
+
+    if (i < valuestr.length() && valuestr[i] == '+')
+        i++;
+
+    for (; i < valuestr.length(); ++i) {
+        if (isdigit(valuestr[i])) {
+            digitFound = true;
+        } else if (valuestr[i] == '.' && !decimalPoint) {
+            decimalPoint = true;
+        } else if (isspace(valuestr[i])) {
+            while (i < valuestr.length() && isspace(valuestr[i]))
+                i++;
+            break;
+        } else {
+            return false;
+        }
+    }
+    return digitFound && i == valuestr.length();
+}
+
 void    BitcoinExchange::processInputFile(const std::string &filename) {
     std::ifstream file(filename.c_str());
     if (!file.is_open())
@@ -97,18 +130,26 @@ void    BitcoinExchange::processInputFile(const std::string &filename) {
     
     std::string line;
     std::string date;
-    float       value;
     std::getline(file, line);
     while (std::getline(file, line)) {
         std::stringstream ss(line);
 
         std::getline(ss, date, '|');
-        ss >> value;
+        std::string valuestr;
+        ss >> valuestr;
 
-        if (!checkDate(date) || !ss) {
-            std::cerr << "Error: bad input => " << line << std::endl;
+        if (!checkDate(date)) {
+            std::cerr << "Error: bad input => " << date << std::endl;
             continue;
         }
+
+        if (!checkValue(valuestr) || !ss) {
+            std::cerr << "Error: bad input => " << valuestr << std::endl;
+            continue;
+        }
+        
+        float value = std::atof(valuestr.c_str());
+        
         if (value < 0) {
             std::cerr << "Error: not a positive number." << std::endl;
             continue;

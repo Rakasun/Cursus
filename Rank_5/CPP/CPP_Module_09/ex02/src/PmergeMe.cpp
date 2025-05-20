@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:35:00 by yfang             #+#    #+#             */
-/*   Updated: 2025/05/12 18:37:28 by yfang            ###   ########.fr       */
+/*   Updated: 2025/05/20 18:04:17 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ PmergeMe::PmergeMe(int ac, char** av) {
             throw InvalidInputException();
 
         long nb = std::atol(arg.c_str());
-        if (nb < 0)
+        if (nb < 0 || nb > 2147483647)
             throw InvalidInputException();
 
         if (std::find(_vec.begin(), _vec.end(), nb) == _vec.end()) {
@@ -107,13 +107,16 @@ void sortJacobstal(std::vector<int> &vec, size_t n_pairs, std::vector<int> &jaco
     std::vector<std::vector<int> > a_blocks;
     std::vector<std::vector<int> > b_blocks;
 
+    bool finish = false;
     if (n_pairs == 1) {
+        finish = true;
         for (size_t i = 0; i < vec.size(); i++) {
             if (i % 2 == 0)
                 b_blocks.push_back(std::vector<int>(1, vec[i]));
             else
                 a_blocks.push_back(std::vector<int>(1, vec[i]));
         }
+
     } else {
         for (size_t i = 0; i < pairs_n_elemt; i++) {
             size_t start = i * n_pairs * 2;
@@ -128,7 +131,7 @@ void sortJacobstal(std::vector<int> &vec, size_t n_pairs, std::vector<int> &jaco
     }
 
     std::vector<int> no_part;
-    if (vec.size() % (n_pairs * 2) != 0) {
+    if (vec.size() % (n_pairs * 2) != 0 && !finish) {
         size_t start = pairs_n_elemt * n_pairs * 2;
         no_part.insert(no_part.end(), vec.begin() + start, vec.end());
     }
@@ -160,7 +163,7 @@ void PmergeMe::sortVector(std::vector<int> &vec, size_t n_pairs) {
     size_t paris_n_elemt = vec.size() / (n_pairs * 2);
 
     sortPairs(vec, n_pairs);
-
+    
     if (paris_n_elemt <= 1)
         return;
 
@@ -236,7 +239,10 @@ void sortJacobstal(std::deque<int> &deq, size_t n_pairs, std::deque<int> &jacobs
     std::deque<std::deque<int> > a_blocks;
     std::deque<std::deque<int> > b_blocks;
 
+    bool finish = false;
+
     if (n_pairs == 1) {
+        finish = true;
         for (size_t i = 0; i < deq.size(); i++) {
             if (i % 2 == 0)
                 b_blocks.push_back(std::deque<int>(1, deq[i]));
@@ -257,7 +263,7 @@ void sortJacobstal(std::deque<int> &deq, size_t n_pairs, std::deque<int> &jacobs
     }
 
     std::deque<int> no_part;
-    if (deq.size() % (n_pairs * 2) != 0) {
+    if (deq.size() % (n_pairs * 2) != 0 && !finish) {
         size_t start = pairs_n_elemt * n_pairs * 2;
         no_part.insert(no_part.end(), deq.begin() + start, deq.end());
     }
