@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:29:21 by yfang             #+#    #+#             */
-/*   Updated: 2025/05/20 18:49:28 by yfang            ###   ########.fr       */
+/*   Updated: 2025/05/22 19:40:57 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,12 +138,16 @@ void    BitcoinExchange::processInputFile(const std::string &filename) {
         std::string valuestr;
         ss >> valuestr;
 
+        std::string extra;
+
+        ss >> extra;
+
         if (!checkDate(date)) {
             std::cerr << "Error: bad input => " << date << std::endl;
             continue;
         }
 
-        if (!checkValue(valuestr) || !ss) {
+        if (!checkValue(valuestr) || !extra.empty()) {
             std::cerr << "Error: bad input => " << valuestr << std::endl;
             continue;
         }

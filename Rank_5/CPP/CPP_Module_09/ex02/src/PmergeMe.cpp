@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:35:00 by yfang             #+#    #+#             */
-/*   Updated: 2025/05/20 18:04:17 by yfang            ###   ########.fr       */
+/*   Updated: 2025/05/22 19:26:09 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,15 +159,31 @@ void sortJacobstal(std::vector<int> &vec, size_t n_pairs, std::vector<int> &jaco
         vec.insert(vec.end(), main_chain[i].begin(), main_chain[i].end());
 }
 
+void    shortThree(std::vector<int> &vec) {
+    int third = vec[2];
+    vec.pop_back();
+
+    std::vector<int>::iterator pos = std::lower_bound(vec.begin(), vec.end(), third);
+
+    vec.insert(pos, third);
+}
+
 void PmergeMe::sortVector(std::vector<int> &vec, size_t n_pairs) {
     size_t paris_n_elemt = vec.size() / (n_pairs * 2);
 
     sortPairs(vec, n_pairs);
-    
+
+    if (vec.size() == 3)
+        shortThree(vec);
+
     if (paris_n_elemt <= 1)
         return;
-
+    
     sortVector(vec, n_pairs * 2);
+
+    for (size_t i = 0; i < vec.size(); i++)
+        std::cout << vec[i];
+    std::cout << std::endl;
 
     std::vector<int> jacobsta = generateJacobsthal(paris_n_elemt);
 
@@ -291,11 +307,23 @@ void sortJacobstal(std::deque<int> &deq, size_t n_pairs, std::deque<int> &jacobs
         deq.insert(deq.end(), main_chain[i].begin(), main_chain[i].end());
 }
 
+void    shortThreeDeque(std::deque<int> &deq) {
+    int third = deq[2];
+    deq.pop_back();
+
+    std::deque<int>::iterator pos = std::lower_bound(deq.begin(), deq.end(), third);
+
+    deq.insert(pos, third);
+}
+
 void PmergeMe::sortDeque(std::deque<int> &deq, size_t n_pairs) {
     size_t pairs_n_elemt = deq.size() / (n_pairs * 2);
 
     sortPairs(deq, n_pairs);
 
+    if (deq.size() == 3)
+        shortThreeDeque(deq);
+    
     if (pairs_n_elemt <= 1)
         return;
 
