@@ -6,7 +6,7 @@
 /*   By: yfang <yfang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:35:00 by yfang             #+#    #+#             */
-/*   Updated: 2025/05/22 19:26:09 by yfang            ###   ########.fr       */
+/*   Updated: 2025/05/26 14:48:51 by yfang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,10 +180,6 @@ void PmergeMe::sortVector(std::vector<int> &vec, size_t n_pairs) {
         return;
     
     sortVector(vec, n_pairs * 2);
-
-    for (size_t i = 0; i < vec.size(); i++)
-        std::cout << vec[i];
-    std::cout << std::endl;
 
     std::vector<int> jacobsta = generateJacobsthal(paris_n_elemt);
 
